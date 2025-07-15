@@ -1427,7 +1427,7 @@ ${flags.mode === 'full' || !flags.mode ? `Full-stack development covering all as
               }
             } catch (err: unknown) {
               printError(`Failed to spawn Claude: ${(err as Error).message}`);
-              console.log('Make sure you have the Claude CLI installed.');
+              console.log('Make sure you have the Gemini CLI installed.');
             }
           }
           break;

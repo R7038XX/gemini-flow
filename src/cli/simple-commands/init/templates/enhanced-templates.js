@@ -998,9 +998,9 @@ export function createHelperScript(name) {
 echo "🚀 Setting up Claude Flow MCP server..."
 
 # Check if claude command exists
-if ! command -v claude &> /dev/null; then
-    echo "❌ Error: Claude Code CLI not found"
-    echo "Please install Claude Code first"
+if ! command -v gemini &> /dev/null; then
+    echo "❌ Error: Gemini CLI not found"
+    echo "Please install Gemini CLI first"
     exit 1
 fi
 
@@ -1009,7 +1009,7 @@ echo "📦 Adding Claude Flow MCP server..."
 claude mcp add claude-flow npx claude-flow mcp start
 
 echo "✅ MCP server setup complete!"
-echo "🎯 You can now use mcp__claude-flow__ tools in Claude Code"
+echo "🎯 You can now use mcp__claude-flow__ tools in Gemini CLI"
 `,
     'quick-start.sh': `#!/bin/bash
 # Quick start guide for Claude Flow
@@ -1189,11 +1189,11 @@ function createEnhancedClaudeMdFallback() {
     return readFileSync(join(__dirname, 'CLAUDE.md'), 'utf8');
   } catch (error) {
     // If that fails, return a minimal version
-    return `# Claude Code Configuration for Claude Flow
+    return `# Gemini CLI Configuration for Claude Flow
 
 ## 🚀 IMPORTANT: Claude Flow AI-Driven Development
 
-### Claude Code Handles:
+### Gemini CLI Handles:
 - ✅ **ALL file operations** (Read, Write, Edit, MultiEdit)
 - ✅ **ALL code generation** and development tasks
 - ✅ **ALL bash commands** and system operations
@@ -1201,7 +1201,7 @@ function createEnhancedClaudeMdFallback() {
 - ✅ **Project navigation** and code analysis
 
 ### Claude Flow MCP Tools Handle:
-- 🧠 **Coordination only** - Orchestrating Claude Code's actions
+- 🧠 **Coordination only** - Orchestrating Gemini CLI's actions
 - 💾 **Memory management** - Persistent state across sessions
 - 🤖 **Neural features** - Cognitive patterns and learning
 - 📊 **Performance tracking** - Monitoring and metrics
@@ -1209,7 +1209,7 @@ function createEnhancedClaudeMdFallback() {
 - 🔗 **GitHub integration** - Advanced repository management
 
 ### ⚠️ Key Principle:
-**MCP tools DO NOT create content or write code.** They coordinate and enhance Claude Code's native capabilities.
+**MCP tools DO NOT create content or write code.** They coordinate and enhance Gemini CLI's native capabilities.
 
 ## Quick Start
 

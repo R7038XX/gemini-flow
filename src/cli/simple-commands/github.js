@@ -150,10 +150,10 @@ export async function githubCommand(args, flags) {
     const { execSync } = await import('child_process');
     
     try {
-      execSync('which claude', { stdio: 'ignore' });
+      execSync('which gemini', { stdio: 'ignore' });
     } catch (e) {
-      printWarning('⚠️  Claude CLI not found. GitHub automation requires Claude.');
-      console.log('Install Claude: https://claude.ai/code');
+      printWarning('⚠️  Gemini CLI not found. GitHub automation requires Gemini.');
+      console.log('Install Gemini: https://github.com/google-gemini/gemini-cli');
       console.log('\nAlternatively, this would execute:');
       console.log(`1. Initialize ${mode} workflow for: ${objective}`);
       console.log('2. Set up GitHub integration and permissions');
@@ -278,7 +278,7 @@ Begin execution now. Create all necessary GitHub workflow files and configuratio
     console.log('4. Automation rules would be established');
     console.log('5. Monitoring and reporting would be set up');
     
-    printWarning('\n⚠️  Note: Full GitHub automation requires Claude CLI.');
+    printWarning('\n⚠️  Note: Full GitHub automation requires Gemini CLI.');
     console.log('Install Claude: https://claude.ai/code');
   }
 }

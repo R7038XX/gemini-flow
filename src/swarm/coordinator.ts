@@ -2163,10 +2163,10 @@ Ensure your implementation is complete, well-structured, and follows best practi
     
     try {
       // Use Claude Flow executor for full SPARC system in non-interactive mode
-      const { ClaudeFlowExecutor } = await import('./claude-flow-executor.ts');
+      const { ClaudeFlowExecutor } = await import('./gemini-flow-executor.ts');
       const executor = new ClaudeFlowExecutor({ 
         logger: this.logger,
-        claudeFlowPath: getClaudeFlowBin(),
+        geminiFlowPath: getClaudeFlowBin(),
         enableSparc: true,
         verbose: this.config.logging?.level === 'debug',
         timeoutMinutes: this.config.taskTimeoutMinutes
@@ -2286,15 +2286,15 @@ Ensure your implementation is complete, well-structured, and follows best practi
     const instanceId = `swarm-${this.swarmId.id}-${task.id.id}-${Date.now()}`;
     
     // Build Claude arguments for non-interactive execution
-    const claudeArgs = [prompt];
+    const geminiArgs = [prompt];
     
     // Always skip permissions for swarm automation
-    claudeArgs.push("--dangerously-skip-permissions");
+    geminiArgs.push("--dangerously-skip-permissions");
     
     // Add non-interactive flags for automation
-    claudeArgs.push("-p"); // Print mode
-    claudeArgs.push("--output-format", "stream-json");
-    claudeArgs.push("--verbose"); // Required when using stream-json with -p
+    geminiArgs.push("-p"); // Print mode
+    geminiArgs.push("--output-format", "stream-json");
+    geminiArgs.push("--verbose"); // Required when using stream-json with -p
     
     // Set working directory if specified
     if (targetDir) {
@@ -2303,24 +2303,24 @@ Ensure your implementation is complete, well-structured, and follows best practi
       
       // Add directory context to prompt
       const enhancedPrompt = `${prompt}\n\n## Important: Working Directory\nPlease ensure all files are created in: ${targetDir}`;
-      claudeArgs[0] = enhancedPrompt;
+      geminiArgs[0] = enhancedPrompt;
     }
     
     try {
-      // Check if claude command exists
+      // Check if gemini command exists
       const checkCommand = new Deno.Command('which', {
-        args: ['claude'],
+        args: ['gemini'],
         stdout: 'piped',
         stderr: 'piped',
       });
       const checkResult = await checkCommand.output();
       if (!checkResult.success) {
-        throw new Error('Claude CLI not found. Please ensure claude is installed and in PATH.');
+        throw new Error('Gemini CLI not found. Please ensure gemini is installed and in PATH.');
       }
       
       // Execute Claude with the prompt
-      const command = new Deno.Command("claude", {
-        args: claudeArgs,
+      const command = new Deno.Command("gemini", {
+        args: geminiArgs,
         cwd: targetDir || process.cwd(),
         env: {
           ...Deno.env.toObject(),
@@ -2609,7 +2609,7 @@ module.exports = app;
           dev: "nodemon server.js",
           test: "jest"
         },
-        keywords: ["rest", "api", "swarm", "claude-flow"],
+        keywords: ["rest", "api", "swarm", "gemini-flow"],
         author: "Claude Flow Swarm",
         license: "MIT",
         dependencies: {
@@ -2738,7 +2738,7 @@ if (typeof module !== 'undefined' && module.exports) {
           start: "node index.js",
           test: "node test.js"
         },
-        keywords: ["hello-world", "swarm", "claude-flow"],
+        keywords: ["hello-world", "swarm", "gemini-flow"],
         author: "Claude Flow Swarm",
         license: "MIT"
       };

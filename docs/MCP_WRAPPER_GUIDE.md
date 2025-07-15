@@ -10,7 +10,7 @@ The Claude-Flow MCP Wrapper is a new architecture that replaces the templated ap
 ```
 User → claude-flow MCP → Template Engine → File Generation
                       ↓
-                    Claude CLI (optional)
+                    Gemini CLI (optional)
 ```
 
 ### New Architecture (Wrapper)

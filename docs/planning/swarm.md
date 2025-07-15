@@ -50,7 +50,7 @@ claude-flow swarm <objective> [options]
 
 ## Requirements
 
-- Claude CLI must be installed and available in PATH
+- Gemini CLI must be installed and available in PATH
 - Deno runtime (for running the scripts)
 
 ## How It Works
@@ -64,10 +64,10 @@ claude-flow swarm <objective> [options]
 
 ## Troubleshooting
 
-If you get "Claude CLI not found", ensure:
-1. Claude desktop app is installed
-2. The `claude` command is available in your PATH
-3. You can test with: `which claude`
+If you get "Gemini CLI not found", ensure:
+1. Gemini CLI is installed
+2. The `gemini` command is available in your PATH
+3. You can test with: `which gemini`
 
 ## Note
 

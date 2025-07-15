@@ -67,8 +67,8 @@ When Claude connects to this MCP server:
 1. All 17 SPARC modes are available as tools
 2. Each mode executes with mode-specific prompts and tools
 3. The implementation supports both:
-   - Real Claude CLI execution (when available)
-   - Template-based fallback (when Claude CLI unavailable)
+   - Real Gemini CLI execution (when available)
+   - Template-based fallback (when Gemini CLI unavailable)
 
 ## Testing
 

@@ -127,7 +127,7 @@ async function main() {
   
   // Additional manual test instructions
   console.log('\n' + colors.bold('Manual Testing Instructions:'));
-  console.log('1. Test with actual Claude CLI (if available):');
+  console.log('1. Test with actual Gemini CLI (if available):');
   console.log('   ./swarm-demo.ts "Build a simple calculator"');
   console.log('   ./bin/claude-flow swarm "Create a REST API"');
   console.log('\n2. Test various strategies:');

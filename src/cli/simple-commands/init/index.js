@@ -1,4 +1,4 @@
-// init/index.js - Initialize Claude Code integration files
+// init/index.js - Initialize Gemini CLI integration files
 import { printSuccess, printError, printWarning } from '../../utils.js';
 import { Deno, cwd, exit, existsSync } from '../../node-compat.js';
 import process from 'process';
@@ -51,11 +51,11 @@ import {
 } from './templates/enhanced-templates.js';
 
 /**
- * Check if Claude Code CLI is installed
+ * Check if Gemini CLI is installed
  */
-function isClaudeCodeInstalled() {
+function isGeminiInstalled() {
   try {
-    execSync('which claude', { stdio: 'ignore' });
+    execSync('which gemini', { stdio: 'ignore' });
     return true;
   } catch {
     return false;
@@ -63,10 +63,10 @@ function isClaudeCodeInstalled() {
 }
 
 /**
- * Set up MCP servers in Claude Code
+ * Set up MCP servers in Gemini CLI
  */
 async function setupMcpServers(dryRun = false) {
-  console.log('\n🔌 Setting up MCP servers for Claude Code...');
+  console.log('\n🔌 Setting up MCP servers for Gemini CLI...');
   
   const servers = [
     {
@@ -85,21 +85,21 @@ async function setupMcpServers(dryRun = false) {
     try {
       if (!dryRun) {
         console.log(`  🔄 Adding ${server.name}...`);
-        execSync(`claude mcp add ${server.name} ${server.command}`, { stdio: 'inherit' });
+        execSync(`gemini mcp add ${server.name} ${server.command}`, { stdio: 'inherit' });
         console.log(`  ✅ Added ${server.name} - ${server.description}`);
       } else {
         console.log(`  [DRY RUN] Would add ${server.name} - ${server.description}`);
       }
     } catch (err) {
       console.log(`  ⚠️  Failed to add ${server.name}: ${err.message}`);
-      console.log(`     You can add it manually with: claude mcp add ${server.name} ${server.command}`);
+      console.log(`     You can add it manually with: gemini mcp add ${server.name} ${server.command}`);
     }
   }
   
   if (!dryRun) {
     console.log('\n  📋 Verifying MCP servers...');
     try {
-      execSync('claude mcp list', { stdio: 'inherit' });
+      execSync('gemini mcp list', { stdio: 'inherit' });
     } catch (err) {
       console.log('  ⚠️  Could not verify MCP servers');
     }
@@ -168,7 +168,7 @@ export async function initCommand(subArgs, flags) {
   }
   
   try {
-    printSuccess('Initializing Claude Code integration files...');
+    printSuccess('Initializing Gemini CLI integration files...');
     
     // Check if files already exist in the working directory
     const files = ['CLAUDE.md', 'memory-bank.md', 'coordination.md'];
@@ -419,7 +419,7 @@ export async function initCommand(subArgs, flags) {
               await createClaudeSlashCommands(workingDir);
             }
           } catch (err) {
-            printWarning(`Could not create Claude Code slash commands: ${err.message}`);
+            printWarning(`Could not create Gemini CLI slash commands: ${err.message}`);
           }
         }
       }
@@ -434,7 +434,7 @@ export async function initCommand(subArgs, flags) {
       console.log('  • Directory structure: memory/, coordination/, .claude/');
       console.log('  • Local executable: ./claude-flow');
       if (initSparc) {
-        console.log(`  • Claude Code slash commands: ${selectedModes ? selectedModes.length : 'All'} SPARC mode commands`);
+        console.log(`  • Gemini CLI slash commands: ${selectedModes ? selectedModes.length : 'All'} SPARC mode commands`);
         console.log('  • SPARC environment with all development modes');
       }
       if (initOptimized) {
@@ -443,7 +443,7 @@ export async function initCommand(subArgs, flags) {
       }
       console.log('\n🚀 To proceed with initialization, run the same command without --dry-run');
     } else {
-      printSuccess('🎉 Claude Code integration files initialized successfully!');
+      printSuccess('🎉 Gemini CLI integration files initialized successfully!');
       
       if (initOptimized) {
         console.log('\n⚡ Batchtools Optimization Enabled!');
@@ -462,7 +462,7 @@ export async function initCommand(subArgs, flags) {
       
       if (initSparc) {
         const modeCount = selectedModes ? selectedModes.length : '20+';
-        console.log(`  ✅ Claude Code slash commands (${modeCount} SPARC modes)`);
+        console.log(`  ✅ Gemini CLI slash commands (${modeCount} SPARC modes)`);
         console.log('  ✅ Complete SPARC development environment');
       }
       
@@ -473,7 +473,7 @@ export async function initCommand(subArgs, flags) {
       console.log('4. Use \'claude --dangerously-skip-permissions\' for unattended operation');
       
       if (initSparc) {
-        console.log('5. Use Claude Code slash commands: /sparc, /sparc-architect, /sparc-tdd, etc.');
+        console.log('5. Use Gemini CLI slash commands: /sparc, /sparc-architect, /sparc-tdd, etc.');
         console.log('6. Explore SPARC modes with \'./claude-flow sparc modes\'');
         console.log('7. Try TDD workflow with \'./claude-flow sparc tdd "your task"\'');
         
@@ -485,7 +485,7 @@ export async function initCommand(subArgs, flags) {
       }
       
       console.log('\n💡 Tips:');
-      console.log('  • Type \'/\' in Claude Code to see all available slash commands');
+      console.log('  • Type \'/\' in Gemini CLI to see all available slash commands');
       console.log('  • Use \'./claude-flow status\' to check system health');
       console.log('  • Store important context with \'./claude-flow memory store\'');
       
@@ -495,9 +495,9 @@ export async function initCommand(subArgs, flags) {
         console.log('  • Monitor performance with real-time metrics');
       }
       
-      // Check for Claude Code and set up MCP servers (always enabled by default)
-      if (!initDryRun && isClaudeCodeInstalled()) {
-        console.log('\n🔍 Claude Code CLI detected!');
+      // Check for Gemini CLI and set up MCP servers (always enabled by default)
+      if (!initDryRun && isGeminiInstalled()) {
+        console.log('\n🔍 Gemini CLI detected!');
         const skipMcp = subArgs && subArgs.includes && subArgs.includes('--skip-mcp');
         
         if (!skipMcp) {
@@ -505,12 +505,12 @@ export async function initCommand(subArgs, flags) {
         } else {
           console.log('  ℹ️  Skipping MCP setup (--skip-mcp flag used)');
         }
-      } else if (!initDryRun && !isClaudeCodeInstalled()) {
-        console.log('\n⚠️  Claude Code CLI not detected!');
-        console.log('  📥 Install with: npm install -g @anthropic-ai/claude-code');
+      } else if (!initDryRun && !isGeminiInstalled()) {
+        console.log('\n⚠️  Gemini CLI not detected!');
+        console.log('  📥 Install with: npm install -g @google/gemini-cli');
         console.log('  📋 Then add MCP servers manually with:');
-        console.log('     claude mcp add claude-flow claude-flow mcp start');
-        console.log('     claude mcp add ruv-swarm npx ruv-swarm mcp start');
+        console.log('     gemini mcp add claude-flow claude-flow mcp start');
+        console.log('     gemini mcp add ruv-swarm npx ruv-swarm mcp start');
       }
     }
     
@@ -1146,9 +1146,9 @@ ${commands.map(cmd => `- [${cmd}](./${cmd}.md)`).join('\n')}
       }
     }
     
-    // Check for Claude Code and set up MCP servers (always enabled by default)
-    if (!dryRun && isClaudeCodeInstalled()) {
-      console.log('\n🔍 Claude Code CLI detected!');
+    // Check for Gemini CLI and set up MCP servers (always enabled by default)
+    if (!dryRun && isGeminiInstalled()) {
+      console.log('\n🔍 Gemini CLI detected!');
       const skipMcp = (options && options['skip-mcp']) || (subArgs && subArgs.includes && subArgs.includes('--skip-mcp'));
       
       if (!skipMcp) {
@@ -1156,27 +1156,27 @@ ${commands.map(cmd => `- [${cmd}](./${cmd}.md)`).join('\n')}
       } else {
         console.log('  ℹ️  Skipping MCP setup (--skip-mcp flag used)');
         console.log('\n  📋 To add MCP servers manually:');
-        console.log('     claude mcp add claude-flow claude-flow mcp start');
-        console.log('     claude mcp add ruv-swarm npx ruv-swarm mcp start');
+        console.log('     gemini mcp add claude-flow claude-flow mcp start');
+        console.log('     gemini mcp add ruv-swarm npx ruv-swarm mcp start');
       }
-    } else if (!dryRun && !isClaudeCodeInstalled()) {
-      console.log('\n⚠️  Claude Code CLI not detected!');
-      console.log('\n  📥 To install Claude Code:');
-      console.log('     npm install -g @anthropic-ai/claude-code');
+    } else if (!dryRun && !isGeminiInstalled()) {
+      console.log('\n⚠️  Gemini CLI not detected!');
+      console.log('\n  📥 To install Gemini CLI:');
+      console.log('     npm install -g @google/gemini-cli');
       console.log('\n  📋 After installing, add MCP servers:');
-      console.log('     claude mcp add claude-flow claude-flow mcp start');
-      console.log('     claude mcp add ruv-swarm npx ruv-swarm mcp start');
+      console.log('     gemini mcp add claude-flow claude-flow mcp start');
+      console.log('     gemini mcp add ruv-swarm npx ruv-swarm mcp start');
     }
     
     // Final instructions
     console.log('\n🎉 Claude Flow v2.0.0 initialization complete!');
     console.log('\n📚 Quick Start:');
-    if (isClaudeCodeInstalled()) {
+    if (isGeminiInstalled()) {
       console.log('1. View available commands: ls .claude/commands/');
       console.log('2. Start a swarm: npx claude-flow swarm init');
-      console.log('3. Use MCP tools in Claude Code for enhanced coordination');
+      console.log('3. Use MCP tools in Gemini CLI for enhanced coordination');
     } else {
-      console.log('1. Install Claude Code: npm install -g @anthropic-ai/claude-code');
+      console.log('1. Install Gemini CLI: npm install -g @google/gemini-cli');
       console.log('2. Add MCP servers (see instructions above)');
       console.log('3. View available commands: ls .claude/commands/');
       console.log('4. Start a swarm: npx claude-flow swarm init');

@@ -221,7 +221,7 @@ Swarm mode integrates seamlessly with other Claude-Flow features:
 ### Common Issues
 
 1. **"Claude command not found"**
-   - Ensure Claude CLI is installed
+   - Ensure Gemini CLI is installed
    - Check PATH environment variable
 
 2. **"Maximum agents reached"**

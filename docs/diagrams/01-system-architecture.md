@@ -5,7 +5,7 @@
 ```mermaid
 graph TB
     subgraph "Claude Code Integration"
-        CC[Claude Code CLI]
+        CC[Gemini CLI]
         MCP_INT[MCP Integration Layer]
         TOOLS[87 MCP Tools]
     end

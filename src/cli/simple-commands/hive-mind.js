@@ -1626,11 +1626,11 @@ async function spawnClaudeCodeInstances(swarmId, swarmName, objective, workers, 
       let claudeAvailable = false;
       
       try {
-        execSync('which claude', { stdio: 'ignore' });
+        execSync('which gemini', { stdio: 'ignore' });
         claudeAvailable = true;
       } catch {
-        console.log(chalk.yellow('\n⚠️  Claude Code CLI not found in PATH'));
-        console.log(chalk.gray('Install it with: npm install -g @anthropic-ai/claude-code'));
+        console.log(chalk.yellow('\n⚠️  Gemini CLI not found in PATH'));
+        console.log(chalk.gray('Install it with: npm install -g @google/gemini-cli'));
         console.log(chalk.gray('\nFalling back to displaying instructions...'));
       }
       
@@ -1674,7 +1674,7 @@ async function spawnClaudeCodeInstances(swarmId, swarmName, objective, workers, 
         console.log(chalk.yellow('\n📋 Manual Execution Instructions:'));
         console.log(chalk.gray('─'.repeat(50)));
         console.log(chalk.gray('1. Install Claude Code:'));
-        console.log(chalk.green('   npm install -g @anthropic-ai/claude-code'));
+        console.log(chalk.green('   npm install -g @google/gemini-cli'));
         console.log(chalk.gray('\n2. Run with the saved prompt:'));
         console.log(chalk.green(`   claude < ${promptFile}`));
         console.log(chalk.gray('\n3. Or copy the prompt manually:'));
@@ -1953,7 +1953,7 @@ ${getWorkerTypeInstructions(workerType)}
 
 Remember: You are part of a COLLECTIVE INTELLIGENCE. Your individual success depends on swarm coordination!`;
 
-  const command = `claude code --context "${context.replace(/"/g, '\\"')}"`;
+  const command = `gemini --context "${context.replace(/"/g, '\\"')}"`;
   
   return {
     title: `${workerType.toUpperCase()} Agent (${typeWorkers.length} instance${typeWorkers.length > 1 ? 's' : ''})`,
