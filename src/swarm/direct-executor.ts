@@ -4,7 +4,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 import { getErrorMessage } from '../utils/error-handler.js';
 /**
  * Direct Task Executor for Swarm
- * Executes tasks directly without relying on Claude CLI
+ * Executes tasks directly without relying on Gemini CLI
  * Works in both local development and npm installed environments
  */
 

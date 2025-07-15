@@ -16,7 +16,7 @@ Claude Flow v2.0.0 is a complete reimagining of AI agent orchestration:
 ## Prerequisites
 
 - **Node.js 18+** 
-- **Claude Code CLI** (recommended) or standalone mode
+- **Gemini CLI** (recommended) or standalone mode
 - **Terminal access** with bash support
 - **Internet connection** for MCP tool integration
 

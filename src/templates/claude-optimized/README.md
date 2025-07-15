@@ -104,7 +104,7 @@ To update the templates:
 
 ## Requirements
 
-- Claude Code CLI installed
+- Gemini CLI installed
 - Node.js for test execution
 - Read/write permissions in project directory
 

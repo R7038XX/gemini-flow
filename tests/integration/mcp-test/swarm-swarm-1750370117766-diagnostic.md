@@ -5,7 +5,7 @@
 **Exit Code:** 143
 **Execution Time:** 60078ms
 
-## Claude CLI Output
+## Gemini CLI Output
 
 ### stdout (0 chars):
 ```

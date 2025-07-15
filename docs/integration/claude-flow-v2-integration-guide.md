@@ -20,7 +20,7 @@ This comprehensive guide covers all integration points for Claude Flow v2.0.0, i
 ### Prerequisites
 
 - Node.js 20+ (LTS recommended)
-- Claude Code CLI with MCP support
+- Gemini CLI with MCP support
 - npm 9+ or equivalent package manager
 - Git for version control
 

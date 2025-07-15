@@ -173,10 +173,10 @@ Check that Node.js is installed:
 node --version
 ```
 
-### Claude not found
-Ensure Claude CLI is in your PATH:
+### Gemini not found
+Ensure Gemini CLI is in your PATH:
 ```bash
-which claude
+which gemini
 ```
 
 ### Terminal too small

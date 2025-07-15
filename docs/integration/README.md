@@ -1,8 +1,8 @@
-# Claude Flow v2.0.0 - Integration Documentation
+# Gemini CLI Integration Documentation
 
 ## 🎯 Overview
 
-This directory contains comprehensive integration guides and technical documentation for Claude Flow v2.0.0, covering all aspects of ruv-swarm integration, neural networks, MCP tools, and enterprise deployment.
+This directory contains comprehensive integration guides for the Gemini CLI, covering ruv-swarm integration, neural networks, MCP tools, and enterprise deployment.
 
 ## 📋 Documentation Index
 
@@ -12,7 +12,7 @@ This directory contains comprehensive integration guides and technical documenta
 Comprehensive setup and configuration guide covering:
 - ruv-swarm MCP integration (87 tools)
 - QUDAG/DAA WASM neural networks
-- Claude Code MCP server configuration
+ - Gemini CLI MCP server configuration
 - Benchmark system setup and usage
 - Enterprise deployment strategies
 - Performance validation and metrics
@@ -51,30 +51,30 @@ Comprehensive problem-solving resource:
 
 ### Basic Integration
 ```bash
-# Install and initialize Claude Flow v2.0.0
-npm install -g claude-flow@2.0.0
-npx claude-flow@2.0.0 init --claude --webui
+# Install and initialize Gemini CLI
+npm install -g @google/gemini-cli
+gemini init --webui
 
 # Add ruv-swarm MCP server
-claude mcp add ruv-swarm npx ruv-swarm mcp start
+gemini mcp add ruv-swarm npx ruv-swarm mcp start
 
 # Initialize swarm coordination
-npx claude-flow@2.0.0 coordination swarm-init --topology mesh --max-agents 8
+gemini coordination swarm-init --topology mesh --max-agents 8
 ```
 
 ### Verification Commands
 ```bash
 # Check system health
-npx claude-flow@2.0.0 health-check --comprehensive
+gemini health-check --comprehensive
 
 # Verify MCP integration
-claude mcp list-tools ruv-swarm | wc -l  # Should show 87 tools
+gemini mcp list-tools ruv-swarm | wc -l  # Should show 87 tools
 
 # Test neural networks
-npx claude-flow@2.0.0 neural status --detailed
+gemini neural status --detailed
 
 # Start WebUI
-npx claude-flow@2.0.0 start --ui --port 3000
+gemini start --ui --port 3000
 ```
 
 ---
@@ -115,7 +115,7 @@ npx claude-flow@2.0.0 start --ui --port 3000
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    Claude Code Integration                      │
+│                    Gemini CLI Integration                      │
 ├─────────────────────────────────────────────────────────────────┤
 │  MCP Tools (87) │ Web Interface │ Neural Processing            │
 ├─────────────────────────────────────────────────────────────────┤
@@ -132,7 +132,7 @@ npx claude-flow@2.0.0 start --ui --port 3000
 ```
 
 ### Component Interaction Flow
-1. **Claude Code** initiates tasks using native tools
+1. **Gemini CLI** initiates tasks using native tools
 2. **MCP Layer** coordinates with ruv-swarm for complex workflows
 3. **Swarm Coordinator** spawns and manages specialized agents
 4. **Neural Networks** provide intelligent decision-making
@@ -168,16 +168,16 @@ npx claude-flow@2.0.0 start --ui --port 3000
 ### Prerequisites
 - Node.js 20+ (LTS recommended)
 - npm 9+ or equivalent package manager
-- Claude Code CLI with MCP support
+- Gemini CLI with MCP support
 - Git for version control
 - Docker (optional, for containerized deployment)
 
 ### Installation Process
-1. **Install Claude Flow**: `npm install -g claude-flow@2.0.0`
-2. **Initialize Integration**: `npx claude-flow@2.0.0 init --claude --webui`
-3. **Configure MCP**: `claude mcp add ruv-swarm npx ruv-swarm mcp start`
-4. **Verify Setup**: `npx claude-flow@2.0.0 health-check --comprehensive`
-5. **Start Coordination**: `npx claude-flow@2.0.0 start --ui`
+1. **Install Gemini CLI**: `npm install -g @google/gemini-cli`
+2. **Initialize Integration**: `gemini init --webui`
+3. **Configure MCP**: `gemini mcp add ruv-swarm npx ruv-swarm mcp start`
+4. **Verify Setup**: `gemini health-check --comprehensive`
+5. **Start Coordination**: `gemini start --ui`
 
 ### First Steps
 1. **Initialize Swarm**: Create your first coordination topology
@@ -252,12 +252,12 @@ npx claude-flow@2.0.0 start --ui --port 3000
 
 ### External Resources
 - [ruv-swarm Repository](https://github.com/ruvnet/ruv-FANN) - Neural network foundation
-- [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code) - Claude Code CLI
+- [Gemini CLI Repository](https://github.com/google-gemini/gemini-cli) - Installation and usage
 - [MCP Protocol](https://spec.modelcontextprotocol.io/) - Model Context Protocol
 
 ### Community
-- [GitHub Issues](https://github.com/ruvnet/claude-code-flow/issues) - Bug reports and feature requests
-- [GitHub Discussions](https://github.com/ruvnet/claude-code-flow/discussions) - Community support
+- [GitHub Issues](https://github.com/google-gemini/gemini-cli/issues) - Bug reports and feature requests
+- [GitHub Discussions](https://github.com/google-gemini/gemini-cli/discussions) - Community support
 - [Performance Metrics](../reports/COMPREHENSIVE_BENCHMARK_ANALYSIS_REPORT.md) - Latest benchmarks
 
 ---
@@ -281,4 +281,4 @@ After completing integration, you should achieve:
 - Memory compression: >60%
 - System uptime: >99.5%
 
-This integration documentation provides everything needed to successfully deploy and operate Claude Flow v2.0.0 in any environment, from development to enterprise production.
+This integration documentation provides everything needed to successfully deploy and operate the Gemini CLI in any environment, from development to enterprise production.

@@ -298,7 +298,7 @@
       "Optional: Run test harness to verify installation"
     ],
     "requirements": [
-      "Claude Code CLI installed",
+      "Gemini CLI installed",
       "Node.js runtime for test execution",
       "Read/write permissions in project directory"
     ]

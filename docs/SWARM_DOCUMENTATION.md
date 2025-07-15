@@ -128,17 +128,17 @@ This displays:
 
 ## Requirements
 
-- Claude desktop app installed
-- `claude` command available in PATH
+- Gemini CLI installed
+- `gemini` command available in PATH
 - Terminal access (for native mode)
 - VS Code (for VS Code integration)
 
 ## Troubleshooting
 
-### Claude CLI Not Found
-Make sure Claude desktop app is installed and the `claude` command is in your PATH:
+### Gemini CLI Not Found
+Make sure Gemini CLI is installed and the `gemini` command is in your PATH:
 ```bash
-which claude
+which gemini
 ```
 
 ### Terminal Spawning Issues

@@ -56,7 +56,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - End-to-end workflow support
 
 ### Technical Details
-- Compatible with Claude Code CLI
+- Compatible with Gemini CLI
 - Requires Node.js for test execution
 - Supports all major SPARC methodology phases
 - Integrated with Claude Flow orchestration

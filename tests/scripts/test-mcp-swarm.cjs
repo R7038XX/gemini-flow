@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 async function testSparcSwarm() {
-  console.log('Testing SPARC Swarm with real Claude CLI...');
+  console.log('Testing SPARC Swarm with real Gemini CLI...');
   
   const objective = 'Create a task management system with React frontend';
   const strategy = 'development';
@@ -36,7 +36,7 @@ Create files with the swarm ID in the filename. For a ${strategy} strategy, crea
 Generate REAL, FUNCTIONAL code and documentation based on the specific objective. Do not use generic templates.`;
 
   return new Promise((resolve, reject) => {
-    console.log(`Starting REAL Claude CLI swarm with piped output`);
+    console.log(`Starting REAL Gemini CLI swarm with piped output`);
     console.log(`Swarm ID: ${swarmId}`);
 
     let stdout = '';
@@ -118,10 +118,10 @@ Generate REAL, FUNCTIONAL code and documentation based on the specific objective
           executionTime,
           realExecution: true,
           claudeOutput: stdout.slice(-500), // Last 500 chars
-          message: `✅ SPARC Swarm - Real Claude CLI with Piped Output SUCCESSFUL`
+          message: `✅ SPARC Swarm - Real Gemini CLI with Piped Output SUCCESSFUL`
         });
       } else {
-        console.warn(`Claude CLI failed with code ${code}. stdout: ${stdout.slice(-200)}, stderr: ${stderr.slice(-200)}`);
+        console.warn(`Gemini CLI failed with code ${code}. stdout: ${stdout.slice(-200)}, stderr: ${stderr.slice(-200)}`);
         
         // Create diagnostic file with actual Claude output
         const diagnosticFile = `swarm-${swarmId}-diagnostic.md`;
@@ -134,7 +134,7 @@ Generate REAL, FUNCTIONAL code and documentation based on the specific objective
 **Exit Code:** ${code}
 **Execution Time:** ${executionTime}ms
 
-## Claude CLI Output
+## Gemini CLI Output
 
 ### stdout (${stdout.length} chars):
 \`\`\`
@@ -174,14 +174,14 @@ Generated: ${new Date().toISOString()}
           realExecution: true,
           claudeOutput: stdout,
           claudeError: stderr,
-          error: `Claude CLI execution failed with code ${code}`
+          error: `Gemini CLI execution failed with code ${code}`
         });
       }
     });
 
     claudeProcess.on('error', (err) => {
       clearInterval(fileCheckInterval);
-      console.error(`Claude CLI spawn error:`, err);
+      console.error(`Gemini CLI spawn error:`, err);
       
       resolve({
         success: false,
@@ -194,7 +194,7 @@ Generated: ${new Date().toISOString()}
     // Add timeout to prevent hanging
     setTimeout(() => {
       if (!claudeProcess.killed) {
-        console.warn(`Claude CLI execution timeout after 60s, killing process`);
+        console.warn(`Gemini CLI execution timeout after 60s, killing process`);
         claudeProcess.kill('SIGTERM');
       }
     }, 60000);

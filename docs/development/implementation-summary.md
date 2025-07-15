@@ -123,7 +123,7 @@ async spawnClaudeCodeAgent(agent, task, taskId) {
 
 ### Integration Points:
 - **ruv-swarm MCP**: Full hook integration for coordination
-- **Claude Code CLI**: Direct process spawning and coordination
+- **Gemini CLI**: Direct process spawning and coordination
 - **File System**: Comprehensive state persistence and logging
 - **Process Management**: Graceful shutdown and cleanup
 

@@ -65,7 +65,7 @@ export function showInitHelp() {
   console.log('  • memory/ directory for persistent context storage');
   console.log('  • coordination/ directory for agent orchestration');
   console.log('  • ./claude-flow local executable wrapper');
-  console.log('  • Automatic MCP server setup if Claude Code CLI is installed');
+  console.log('  • Automatic MCP server setup if Gemini CLI is installed');
   console.log('  • Pre-configured for TDD, architecture, and code generation');
   console.log();
   console.log('Claude Code Slash Commands Created:');
